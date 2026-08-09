@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Cloud / AI Solutions Roadmap</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">ROADMAP · DELIBERATE PRACTICE · CLOUD / AI SOLUTIONS</p>
+      <h1>從「AI 幫我寫」到能面試 Cloud / AI Solutions</h1>
+      <p class="lead">目標職群：AWS Associate Solutions Architect、Solutions Engineer、Cloud / AI customer-facing technical roles。</p>
+      <div class="hero-grid">
+        <div class="stat"><span id="doneCount">0</span><small>完成里程碑</small></div>
+        <div class="stat"><span id="totalCount">0</span><small>全部里程碑</small></div>
+        <div class="stat"><span id="progressPct">0%</span><small>總進度</small></div>
+        <div class="stat"><span id="streak">0</span><small>最近練習紀錄</small></div>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="actions">
+        <button id="resetBtn" class="ghost">重設本機勾選</button>
+        <a class="button" href="https://github.com/tel0955850213/tel0955850213.github.io/issues/1" target="_blank" rel="noreferrer">GitHub 跨裝置同步清單 ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel warning">
+      <h2>唯一規則：看懂不算會</h2>
+      <p>每個里程碑只有在你<strong>不用 AI 生成核心答案</strong>也能通過驗收時才能勾。AI 可以在你作答之後做 review、出變化題、指出錯誤。</p>
+      <div class="rubric">
+        <div><b>0 聽過</b><span>知道名詞</span></div>
+        <div><b>1 跟做</b><span>看著教學完成</span></div>
+        <div><b>2 回憶</b><span>不看筆記完成</span></div>
+        <div><b>3 除錯</b><span>能修壞掉版本</span></div>
+        <div><b>4 遷移</b><span>新情境自己解</span></div>
+        <div><b>5 教人</b><span>能講 trade-off</span></div>
+      </div>
+      <p class="pass-rule"><strong>求職安全線：</strong>核心技能至少 Level 3–4；溝通 Level 4；任何核心技能不得停在 Level 0–1。</p>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div><p class="eyebrow">12-MONTH BACKWARD PLAN</p><h2>反向時間表：先排休閒，再塞練習</h2></div>
+      </div>
+      <div class="schedule-grid">
+        <article class="schedule-card leisure">
+          <h3>每天先保留</h3>
+          <ul>
+            <li>睡眠：7.5–8.5 小時</li>
+            <li>吃飯＋洗澡＋通勤：2.5–3 小時</li>
+            <li>完全放空／滑手機：45 分鐘</li>
+            <li>遊戲／YouTube／追劇：60–90 分鐘</li>
+            <li>運動／散步：30–45 分鐘</li>
+            <li>朋友／約會／社交：每週 2 個晚上可完全不學</li>
+          </ul>
+        </article>
+        <article class="schedule-card">
+          <h3>剩下時間只做這個</h3>
+          <p>不要排「19:00 學 AWS」。只在空檔選一個 <strong>25–45 分鐘 Rep</strong>。</p>
+          <ul>
+            <li>平日：1 Rep 即及格，最多 2 Rep</li>
+            <li>週末：1 個 60–90 分鐘 lab</li>
+            <li>每週總量：5–7 Reps + 1 Lab</li>
+            <li>每週至少 1 天完全不碰 roadmap</li>
+          </ul>
+        </article>
+        <article class="schedule-card accent">
+          <h3>一天的反向模板</h3>
+          <ol>
+            <li>先決定今天要玩／出門／看什麼。</li>
+            <li>把睡覺時間固定。</li>
+            <li>剩餘空檔若 ≥25 分鐘，才放一個 Rep。</li>
+            <li>做完立刻停止，不因狀態好而追加兩小時。</li>
+            <li>隔天先重測昨天最弱的 1 題。</li>
+          </ol>
+        </article>
+      </div>
+      <div class="timeline">
+        <div><b>M1–2</b><span>Python + Linux + Git</span></div>
+        <div><b>M3–4</b><span>Networking + Docker</span></div>
+        <div><b>M5–7</b><span>AWS Foundations</span></div>
+        <div><b>M8–9</b><span>Architecture + Security</span></div>
+        <div><b>M10</b><span>AI Solutions</span></div>
+        <div><b>M11</b><span>SA Communication</span></div>
+        <div><b>M12</b><span>Capstone + SAA + Recruiting</span></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">DELIBERATE PRACTICE LOOP</p>
+      <h2>每次練習都照這 6 步</h2>
+      <div class="practice-grid">
+        <div><b>1. 單一目標</b><span>今天只練一個能力，例如「不用筆記解釋 DNS」。</span></div>
+        <div><b>2. 先測再學</b><span>先做 5–10 分鐘，確定你到底卡在哪。</span></div>
+        <div><b>3. 剛好超出能力</b><span>題目要讓你失敗，但不是完全做不了。</span></div>
+        <div><b>4. 立即回饋</b><span>用測試、log、正確答案、AI review 找出誤差。</span></div>
+        <div><b>5. 錯誤分類</b><span>不知道概念／記不住／操作錯／判斷錯，四選一。</span></div>
+        <div><b>6. 間隔重測</b><span>隔 1 天、7 天各做一次變化題，過才勾。</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div><p class="eyebrow">MILESTONES</p><h2>技能地圖與「怎樣才算會」</h2></div>
+        <div class="filters">
+          <button class="filter active" data-filter="all">全部</button>
+          <button class="filter" data-filter="todo">未完成</button>
+          <button class="filter" data-filter="done">已完成</button>
+        </div>
+      </div>
+      <div id="roadmap" class="roadmap"></div>
+    </section>
+
+    <section class="panel feedback-panel">
+      <p class="eyebrow">FEEDBACK LOG</p>
+      <h2>每次 Rep 只記 4 句</h2>
+      <div class="feedback-form">
+        <input id="skillInput" placeholder="今天練什麼？例如 DNS" />
+        <textarea id="feedbackInput" rows="5" placeholder="1) 我原本以為…\n2) 我卡在…\n3) 正確模型是…\n4) 明天重測要做…"></textarea>
+        <button id="saveFeedback" class="button">保存本機練習紀錄</button>
+      </div>
+      <div id="feedbackList" class="feedback-list"></div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">JOB-READY GATE</p>
+      <h2>可以開始大量投遞的門檻</h2>
+      <ul class="gate-list">
+        <li>Python：能自己寫 150–300 行小工具，能 debug，不靠 AI 生成核心邏輯。</li>
+        <li>Linux：遇到 process / port / permission / package 問題能自己定位。</li>
+        <li>Networking：能從 browser → DNS → TCP/TLS → Load Balancer → server 完整說一次。</li>
+        <li>Docker：能把 Python API containerize 並處理 logs / env / ports。</li>
+        <li>AWS：能設計並部署一個有 VPC、compute、storage/database、IAM、monitoring 的系統。</li>
+        <li>Architecture：每個設計都能說明 reliability / security / cost / trade-off。</li>
+        <li>AI：能解釋 inference / embeddings / RAG，並完成一個小型 AI solution。</li>
+        <li>溝通：能用英文做 8–10 分鐘架構 demo，回答追問時不亂猜。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p>Local checkboxes & feedback are saved in this browser. For cross-device progress, update the linked GitHub Issue checklist.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
