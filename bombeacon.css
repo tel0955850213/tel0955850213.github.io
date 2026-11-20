@@ -1,0 +1,111 @@
+.bom-intro {
+  padding-block: clamp(3rem, 7vw, 6rem) var(--space-8);
+}
+
+.bom-intro h1 {
+  max-width: 18ch;
+  font-size: clamp(3rem, 7vw, 6rem);
+  margin-bottom: var(--space-4);
+}
+
+.bom-intro > p:last-child {
+  max-width: 60ch;
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+}
+
+.bom-workbench {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: var(--space-8);
+  border-block: 1px solid var(--line);
+  padding-block: var(--space-8);
+}
+
+.bom-workbench h2,
+.bom-design h2 {
+  margin-bottom: var(--space-4);
+  font-size: clamp(2rem, 3vw, 3.25rem);
+}
+
+.bom-input {
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.bom-input label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: 650;
+}
+
+.bom-input textarea,
+.bom-input input {
+  width: 100%;
+  border: 1px solid var(--steel);
+  background: white;
+  padding: var(--space-3);
+  color: var(--ink);
+  font: 0.9rem/1.45 var(--mono);
+}
+
+.bom-input textarea { resize: vertical; }
+.bom-input input { max-width: 10rem; }
+
+.bom-page :is(textarea, input):focus-visible {
+  outline: 0.2rem solid var(--hazard);
+  outline-offset: 0.12rem;
+}
+
+.bom-help,
+.bom-provenance {
+  color: var(--steel);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.bom-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block: var(--space-4);
+}
+
+.bom-actions button {
+  min-width: auto;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.bom-reset { background: var(--surface); color: var(--ink); }
+.bom-reset:hover { background: var(--paper); }
+#bom-error { color: var(--hazard); }
+
+.bom-part {
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+
+.bom-part h3 {
+  overflow-wrap: anywhere;
+  margin-bottom: var(--space-2);
+  font: 700 1rem/1.4 var(--mono);
+}
+
+.bom-part p {
+  margin-bottom: var(--space-2);
+  overflow-wrap: anywhere;
+}
+
+.bom-part p:last-child { margin-bottom: 0; }
+.bom-flag { color: var(--signal-dark); font-weight: 700; }
+.bom-flag.is-risk { color: var(--hazard); }
+.bom-design { max-width: 68ch; padding-block: var(--space-12); }
+
+@media (max-width: 48rem) {
+  .bom-workbench { grid-template-columns: 1fr; }
+}

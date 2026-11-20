@@ -38,8 +38,8 @@
           and ingestion pipelines designed for partial failure.
         </p>
         <div class="hero-actions" aria-label="Portfolio links">
-          <a class="primary-action" href="https://apps.apple.com/us/app/focus-arcana-pomodoro-rpg/id6789488362">Get Focus Arcana</a>
-          <a href="gauge-reader.html">Read the gauge case study</a>
+          <a class="primary-action" href="https://apps.apple.com/tw/app/id6794689780">Get TaiwanTender</a>
+          <a href="bombeacon.html">Try the BOMBeacon demo</a>
           <a href="https://github.com/tel0955850213">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -72,12 +72,53 @@
     <section class="work-section" id="work" aria-labelledby="work-title">
       <div class="section-heading">
         <p class="section-label">Selected work</p>
-        <h2 id="work-title">From camera input to reliable decisions.</h2>
-        <p>Each project is framed around the hard part: what had to be measured, what could fail, and what I did about it.</p>
+        <h2 id="work-title">Data pipelines, hardware, and Apple apps</h2>
+        <p>Try the projects and see how they handle missing data, duplicate records, and ambiguous sensor readings.</p>
       </div>
 
       <div class="project-ledger">
-        <article class="project project-featured">
+        <article class="project project-featured" id="taiwantender">
+          <div class="project-main">
+            <div class="project-meta">
+              <span class="status public">Free iPhone app</span>
+              <span>Python · Cloudflare D1 · SwiftUI</span>
+            </div>
+            <h3>TaiwanTender <span lang="zh-Hant">標案哨兵</span></h3>
+            <p class="project-lede">Browse Taiwanese government tenders and grants, follow changes, and go back to the official notice.</p>
+            <p>The pipeline saves the notice list before fetching individual details. If a detail request is rate-limited or fails, a persistent queue can retry it while the original notice stays visible.</p>
+            <div class="evidence" aria-label="TaiwanTender design">
+              <p><strong>Ingest first</strong><span>notice lists are saved before enrichment</span></p>
+              <p><strong>Retry details</strong><span>failed requests stay in a durable queue</span></p>
+              <p><strong>Keep revisions</strong><span>notice snapshots preserve changes across dates</span></p>
+            </div>
+            <div class="project-links">
+              <a href="https://apps.apple.com/tw/app/id6794689780">Get TaiwanTender on the Taiwan App Store</a>
+            </div>
+          </div>
+          <aside class="project-note">
+            <p class="note-label">Design decision</p>
+            <p>Track the tender and its announcements separately. A new revision can update the case while keeping its previous snapshot available.</p>
+          </aside>
+        </article>
+
+        <article class="project" id="bombeacon">
+          <div class="project-main">
+            <div class="project-meta">
+              <span class="status public">Interactive demo</span>
+              <span>Supply evidence · CSV · hardware</span>
+            </div>
+            <h3>BOMBeacon</h3>
+            <p class="project-lede">Find which electronic parts could hold up a production build.</p>
+            <p>Merge repeated manufacturer part numbers and compare a build’s demand against inventory. Try a fictional BOM and trace each warning to its stock or lifecycle record.</p>
+            <div class="project-links"><a href="bombeacon.html">Try BOMBeacon with a sample CSV</a></div>
+          </div>
+          <aside class="project-note">
+            <p class="note-label">Decision rule</p>
+            <p>A stock shortage needs a build quantity. An unmatched part stays unknown.</p>
+          </aside>
+        </article>
+
+        <article class="project">
           <div class="project-main">
             <div class="project-meta"><span>Computer vision · Python · OpenCV</span></div>
             <h3>Industrial Gauge Reader</h3>
@@ -92,7 +133,6 @@
         </article>
 
         <article class="project">
-          <div class="project-index" aria-hidden="true">A</div>
           <div class="project-main">
             <div class="project-meta">
               <span class="status public">Public source</span>
@@ -122,57 +162,6 @@
         </article>
 
         <article class="project">
-          <div class="project-index" aria-hidden="true">B</div>
-          <div class="project-main">
-            <div class="project-meta">
-              <span class="status case-study">Private source · case study</span>
-              <span>SwiftUI · TypeScript · data reliability</span>
-            </div>
-            <h3>CivicRadar</h3>
-            <p class="project-lede">An iPhone app that tracks official legal and policy changes without confusing a proposal with an enacted rule.</p>
-            <p>
-              The pipeline keeps legal effect separate from political outcome, links every claim to an official source,
-              and quarantines conflicts or missing dates. Clients verify schema, counts, and SHA-256 digests before accepting
-              a full or delta update.
-            </p>
-            <div class="evidence" aria-label="CivicRadar evidence">
-              <p><strong>Hash linked</strong><span>versioned full and delta datasets</span></p>
-              <p><strong>Quarantined</strong><span>conflicts never enter the public feed</span></p>
-              <p><strong>Deterministic</strong><span>AI cannot decide legal status</span></p>
-            </div>
-          </div>
-          <aside class="project-note">
-            <p class="note-label">Failure model</p>
-            <p>One broken source keeps its last known data and records a warning. The run fails only when every source fails.</p>
-          </aside>
-        </article>
-
-        <article class="project">
-          <div class="project-index" aria-hidden="true">C</div>
-          <div class="project-main">
-            <div class="project-meta">
-              <span class="status public">Public source · MIT</span>
-              <span>SwiftUI · CloudKit · Cloudflare Worker</span>
-            </div>
-            <h3>Karteria</h3>
-            <p class="project-lede">A deliberate-practice app where progress is tied to observable evidence, not likes or an AI score.</p>
-            <p>
-              Private practice stays on the device. A checkpoint is verified only when two of three calibrated peers
-              independently confirm all required criteria. Anonymous review and trusted review remain separate systems,
-              with different rules for minors.
-            </p>
-            <div class="project-links">
-              <a href="https://github.com/tel0955850213/Karteria">Read the architecture and source <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-          <aside class="project-note">
-            <p class="note-label">Trust boundary</p>
-            <p>On-device AI can flag missing evidence before submission. It cannot create, change, or replace a peer vote.</p>
-          </aside>
-        </article>
-
-        <article class="project">
-          <div class="project-index" aria-hidden="true">D</div>
           <div class="project-main">
             <div class="project-meta">
               <span class="status public">Public source · MIT</span>
@@ -196,6 +185,14 @@
           </aside>
         </article>
       </div>
+    </section>
+
+    <section class="library-section" id="tools" aria-labelledby="tools-title">
+      <h2 id="tools-title">Run the code locally</h2>
+      <ul>
+        <li><a href="https://github.com/tel0955850213/ManagerRepsCoachingKit">ManagerRepsCoachingKit</a> is an offline Swift package for evidence-linked feedback on practice transcripts.</li>
+        <li><a href="https://github.com/tel0955850213/lexlevel-pipeline">LexLevel Dictionary Pipeline</a> turns sample dictionary entries and level labels into a queryable SQLite file.</li>
+      </ul>
     </section>
 
     <section class="method-section" id="method" aria-labelledby="method-title">

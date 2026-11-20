@@ -72,10 +72,12 @@ code {
   background: var(--ink);
   color: var(--surface);
   transform: translateY(-160%);
+  clip-path: inset(50%);
 }
 
 .skip-link:focus {
   transform: translateY(0);
+  clip-path: none;
 }
 
 .site-header,
@@ -396,7 +398,7 @@ h1 em {
 
 .project {
   display: grid;
-  grid-template-columns: 4rem minmax(0, 1fr) minmax(14rem, 0.42fr);
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.42fr);
   gap: var(--space-8);
   padding-block: var(--space-12);
   border-bottom: 0.08rem solid var(--line);
@@ -404,17 +406,6 @@ h1 em {
 
 .project-featured {
   padding-block: var(--space-16);
-}
-
-.project-featured .project-main {
-  grid-column: 2;
-}
-
-.project-index {
-  color: var(--hazard);
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  font-weight: 700;
 }
 
 .project-meta {
@@ -436,9 +427,17 @@ h1 em {
   text-transform: uppercase;
 }
 
-.status.case-study {
-  color: #795221;
+.library-section {
+  padding-block: var(--space-8) var(--space-16);
 }
+
+.library-section h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: var(--space-4);
+}
+
+.library-section ul { padding-inline-start: var(--space-6); }
+.library-section li + li { margin-top: var(--space-2); }
 
 .project h3 {
   margin-bottom: var(--space-4);
@@ -638,11 +637,10 @@ footer p {
   }
 
   .project {
-    grid-template-columns: 2rem minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .project-note {
-    grid-column: 2;
     max-width: 42rem;
   }
 }
@@ -745,14 +743,6 @@ footer p {
   .project {
     grid-template-columns: 1fr;
     gap: var(--space-4);
-  }
-
-  .project-note {
-    grid-column: auto;
-  }
-
-  .project-featured .project-main {
-    grid-column: auto;
   }
 
   .signal-panel dl div {
