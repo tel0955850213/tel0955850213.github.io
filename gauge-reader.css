@@ -1,0 +1,244 @@
+.gauge-case {
+  --case-highlight: #00665f;
+  --case-face: #edf1e9;
+  --case-yellow: #c4ae71;
+  --case-border: #d7ddd4;
+}
+
+.case-intro {
+  padding-block: clamp(3rem, 8vw, 7rem) var(--space-12);
+}
+
+.case-intro h1 {
+  max-width: 19ch;
+  margin-bottom: var(--space-6);
+  font-size: clamp(3rem, 7vw, 7rem);
+}
+
+.case-intro > p:last-child {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+}
+
+.gauge-demo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 5rem);
+  padding: clamp(1rem, 5vw, 4rem);
+  background: var(--ink);
+  color: var(--surface);
+}
+
+.gauge-figure {
+  margin: 0;
+}
+
+.gauge-dial {
+  position: relative;
+  width: min(100%, 22rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 0.35rem solid var(--case-yellow);
+  border-radius: 50%;
+  background: var(--case-face);
+}
+
+.dial-ticks {
+  position: absolute;
+  inset: 5%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from -1deg, var(--ink) 0 1.4deg, transparent 1.4deg 15deg);
+  mask-image: radial-gradient(transparent 0 60%, #000 61% 69%, transparent 70%);
+}
+
+.dial-ring {
+  position: absolute;
+  inset: 15%;
+  border: 0.2rem dashed var(--case-highlight);
+  border-radius: 50%;
+}
+
+.dial-pointer {
+  position: absolute;
+  inset: 47% 9% 47% 22%;
+  transform: rotate(-43deg);
+  transform-origin: 40.58% center;
+  background: var(--hazard);
+  clip-path: polygon(0 0, 29% 0, 45% 22%, 100% 50%, 45% 78%, 29% 100%, 0 100%);
+}
+
+.dial-hub {
+  position: absolute;
+  inset: 46%;
+  border: 0.2rem solid var(--case-face);
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.dial-pick {
+  position: absolute;
+  left: 29%;
+  top: 69%;
+  width: 8%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 0.2rem solid var(--hazard);
+  border-radius: 50%;
+}
+
+.gauge-demo[data-mode="after"] .dial-pick {
+  left: 80%;
+  top: 22%;
+  border-color: var(--case-highlight);
+}
+
+.gauge-demo[data-mode="hidden"] .dial-pointer {
+  clip-path: polygon(0 0, 29% 0, 45% 22%, 73% 36%, 73% 64%, 45% 78%, 29% 100%, 0 100%);
+}
+
+.gauge-demo[data-mode="hidden"] .dial-pick {
+  display: none;
+}
+
+.gauge-figure figcaption,
+.demo-caption {
+  color: var(--case-border);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.gauge-figure figcaption {
+  max-width: 38ch;
+  margin: var(--space-4) auto 0;
+  text-align: center;
+}
+
+.demo-copy h2,
+.case-section h2 {
+  margin-bottom: var(--space-4);
+  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+  letter-spacing: -0.035em;
+}
+
+.demo-controls:not([hidden]) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  min-inline-size: 0;
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  border: 0;
+}
+
+.demo-controls legend {
+  margin-bottom: var(--space-2);
+  font-size: 0.85rem;
+}
+
+.demo-controls label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--case-border);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.demo-controls input {
+  margin: 0;
+  accent-color: #52d2c6;
+}
+
+.demo-controls label:has(input:focus-visible) {
+  outline: 0.2rem solid var(--case-yellow);
+  outline-offset: 0.2rem;
+}
+
+.demo-result {
+  min-height: 8rem;
+  padding: var(--space-3) var(--space-4);
+  border-left: 0.2rem solid var(--case-yellow);
+}
+
+.result-label {
+  margin-bottom: var(--space-2);
+  font-weight: 700;
+}
+
+.demo-caption,
+.demo-result p:last-child {
+  margin-bottom: 0;
+}
+
+.demo-caption {
+  margin-top: var(--space-4);
+}
+
+.case-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  padding-block: var(--space-12);
+  border-bottom: 1px solid var(--line);
+}
+
+.case-section:last-child {
+  border-bottom: 0;
+}
+
+.case-steps {
+  margin: 0;
+  padding-inline-start: var(--space-6);
+}
+
+.case-steps li + li {
+  margin-top: var(--space-6);
+}
+
+.case-steps h3,
+.case-test-title {
+  margin-bottom: var(--space-2);
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+
+.case-results {
+  margin: 0 0 var(--space-4);
+}
+
+.case-results > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+}
+
+.case-results dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.case-steps p,
+.case-role {
+  margin-bottom: 0;
+}
+
+@media (max-width: 48rem) {
+  .gauge-demo,
+  .case-section {
+    grid-template-columns: 1fr;
+  }
+
+  .gauge-dial {
+    width: min(100%, 16rem);
+  }
+}

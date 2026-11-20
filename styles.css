@@ -406,6 +406,10 @@ h1 em {
   padding-block: var(--space-16);
 }
 
+.project-featured .project-main {
+  grid-column: 2;
+}
+
 .project-index {
   color: var(--hazard);
   font-family: var(--mono);
@@ -744,6 +748,10 @@ footer p {
   }
 
   .project-note {
+    grid-column: auto;
+  }
+
+  .project-featured .project-main {
     grid-column: auto;
   }
 

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="An engineering case study on debugging an analog gauge reader for an inspection robot, including an interactive needle and counterweight example." />
+  <meta name="theme-color" content="#0d1916" />
+  <link rel="canonical" href="https://tel0955850213.github.io/gauge-reader.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <title>Industrial Gauge Reader | Donald Lin</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="gauge-reader.css" />
+  <script src="gauge-reader.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="wordmark" href="./">
+      <span class="wordmark-mark" aria-hidden="true">DL</span><span>Donald Lin</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="./#work">All projects</a>
+      <a href="https://www.linkedin.com/in/donald-lin-0a249320a/">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main id="main" class="gauge-case">
+    <header class="case-intro">
+      <p class="section-label">Industrial Gauge Reader · Engineering case study</p>
+      <h1>When a gauge reader picks the wrong end</h1>
+      <p>An analog gauge needle has a long, thin tip and a short, thick counterweight. During prototype testing, the camera sometimes picked up enough color on the counterweight side to report a plausible value from the wrong end of the needle.</p>
+    </header>
+
+    <section class="gauge-demo" aria-labelledby="demo-title" data-mode="before">
+      <figure class="gauge-figure">
+        <div class="gauge-dial" aria-hidden="true">
+          <div class="dial-ticks"></div>
+          <div class="dial-ring"></div>
+          <div class="dial-pointer"></div>
+          <div class="dial-hub"></div>
+          <div class="dial-pick"></div>
+        </div>
+        <figcaption>Illustrated dial. The highlighted band sits beyond the counterweight’s reach.</figcaption>
+      </figure>
+      <div class="demo-copy">
+        <h2 id="demo-title">Replay the failure</h2>
+        <p>See why the counterweight can win, how the calibrated rule finds the tip, and what happens when the tip is obscured.</p>
+        <fieldset class="demo-controls" hidden>
+          <legend>Reading scenario</legend>
+          <label><input type="radio" name="scenario" value="before" checked /> Original rule</label>
+          <label><input type="radio" name="scenario" value="after" /> Calibrated rule</label>
+          <label><input type="radio" name="scenario" value="hidden" /> Obscured tip</label>
+        </fieldset>
+        <div class="demo-result" aria-live="polite" aria-atomic="true">
+          <p class="result-label" id="result-label">Counterweight selected</p>
+          <p id="result-detail">The older rule scored each direction as a whole. A thick counterweight and nearby colored markings could outweigh the finer needle tip.</p>
+        </div>
+        <p class="demo-caption">This schematic explains the decision logic using synthetic geometry.</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-labelledby="fix-title">
+      <div><p class="section-label">Implementation</p><h2 id="fix-title">Find the axis, then identify the tip</h2></div>
+      <ol class="case-steps">
+        <li><h3>Align to the calibration image</h3><p>Register the camera crop to a known view of that dial. The reference provides the center, scale endpoints, and a sample of the needle color.</p></li>
+        <li><h3>Check both ends of the axis</h3><p>Use pixels near the center to locate the line through the pivot. Compare the two ends in a narrow band that the tip reaches and the shorter counterweight usually cannot.</p></li>
+        <li><h3>Confirm before displaying a value</h3><p>Convert a supported angle to a calibrated reading. Require three consistent readings for the live display. After a zoom, wait for the gauge to settle and the camera to refocus.</p></li>
+      </ol>
+    </section>
+
+    <section class="case-section" aria-labelledby="evidence-title">
+      <div><p class="section-label">Verification</p><h2 id="evidence-title">Trade-offs and limits</h2></div>
+      <div>
+        <p>The ring check makes the answer depend on evidence from the tip itself. Its weak point is a tip that disappears under glare, blur, or low resolution. Waiting for additional readings reduces transient errors and delays the first displayed value.</p>
+        <h3 class="case-test-title">Synthetic check of the angle estimator</h3>
+        <dl class="case-results">
+          <div><dt>Visible tip</dt><dd>8 of 8 accepted</dd></div>
+          <div><dt>Obscured tip</dt><dd>8 of 8 withheld</dd></div>
+        </dl>
+        <p>I checked eight dial angles twice, once with the full tip and once with the tip shortened to simulate an obstruction. The test ran the prototype’s angle estimator on 480 × 480 px synthetic images with known alignment and applied its usual frame acceptance checks. Camera motion, glare, and field accuracy remain separate measurements.</p>
+        <p>A field comparison would use the same labeled footage for both versions, hold the error tolerance fixed, and report wrong readings and withheld readings separately. Angle error belongs alongside coverage, so rejecting difficult frames cannot make the reader appear more accurate on its own.</p>
+        <p class="case-role"><strong>Development workflow.</strong> I used AI coding assistance while developing the prototype. This case study focuses on the observed failure, the change to the decision rule, and how to test that change.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>Donald Lin · Edge AI and Apple platforms</p><a href="./#work">Back to selected work</a></footer>
+</body>
+</html>

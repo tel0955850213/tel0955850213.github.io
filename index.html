@@ -38,7 +38,8 @@
           and ingestion pipelines designed for partial failure.
         </p>
         <div class="hero-actions" aria-label="Portfolio links">
-          <a class="primary-action" href="#work">See the evidence <span aria-hidden="true">↓</span></a>
+          <a class="primary-action" href="https://apps.apple.com/us/app/focus-arcana-pomodoro-rpg/id6789488362">Get Focus Arcana</a>
+          <a href="gauge-reader.html">Read the gauge case study</a>
           <a href="https://github.com/tel0955850213">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -71,12 +72,26 @@
     <section class="work-section" id="work" aria-labelledby="work-title">
       <div class="section-heading">
         <p class="section-label">Selected work</p>
-        <h2 id="work-title">Four systems, four kinds of evidence.</h2>
+        <h2 id="work-title">From camera input to reliable decisions.</h2>
         <p>Each project is framed around the hard part: what had to be measured, what could fail, and what I did about it.</p>
       </div>
 
       <div class="project-ledger">
         <article class="project project-featured">
+          <div class="project-main">
+            <div class="project-meta"><span>Computer vision · Python · OpenCV</span></div>
+            <h3>Industrial Gauge Reader</h3>
+            <p class="project-lede">An inspection robot prototype sometimes read the wrong end of an analog gauge needle.</p>
+            <p>The fix separates finding the needle’s axis from choosing its tip. A calibrated ring provides evidence for which end to trust. When that evidence is weak, the reader can withhold the value.</p>
+            <div class="project-links"><a href="gauge-reader.html">Explore the failure and the fix</a></div>
+          </div>
+          <aside class="project-note">
+            <p class="note-label">Engineering trade-off</p>
+            <p>Waiting for consistent readings adds latency, but keeps a single bad frame from becoming a reported value.</p>
+          </aside>
+        </article>
+
+        <article class="project">
           <div class="project-index" aria-hidden="true">A</div>
           <div class="project-main">
             <div class="project-meta">
@@ -171,7 +186,8 @@
               and collection state remain local.
             </p>
             <div class="project-links">
-              <a href="https://github.com/tel0955850213/MacFocus">View the macOS source <span aria-hidden="true">↗</span></a>
+              <a href="https://apps.apple.com/us/app/focus-arcana-pomodoro-rpg/id6789488362">Get Focus Arcana on the App Store</a>
+              <a href="https://github.com/tel0955850213/MacFocus">View the source</a>
             </div>
           </div>
           <aside class="project-note">
